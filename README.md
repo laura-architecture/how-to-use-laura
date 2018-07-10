@@ -19,25 +19,27 @@ Sergio Teixeira - sergio@multicast.com.br
 
 The main object of this document is to present a step by step tutorial to guide and facilitate the work of those who intend to use the LAURA VM (Teixeira et al., 2017) to develop its own LAURA applied specific Wireless Sensor Network (WSN)/Internet of Things (IoT) final solution. 
 
-The LAURA VM uses the technological choises initially proposed in <Paper awaiting approval>. In order to use the VM, it is necessary to make some settings according to hardware platform which you intend to use, the network design and other aspects related to the applied final application and the enterprise environment. This tutorial is reproducing the experiment 3, available in section 5.3 in <Paper awaiting approval>. Thus, is strongly recommended to read this study for better understanding of this tutorial
+The LAURA VM uses the technological choises initially proposed in [Paper awaiting approval]. In order to use the VM, it is necessary to make some settings according to hardware platform which you intend to use, the network design and other aspects related to the applied final application and the enterprise environment. This tutorial is reproducing the experiment 3, available in section 5.3 in [Paper awaiting approval]. Thus, is strongly recommended to read this study for better understanding of this tutorial
   
 #### 1.2 Target stakeholder
 
-This tutorial was developed to assist the developer or team of developers who wish to develop a LAURA applied specific WSN/IoT final solution based on LAURA architecture, using the ready to use LAURA VM with the technological choises made as described in section ‘4.4. LAURA Applied architecture’ <Paper awaiting approval>. 
+This tutorial was developed to assist the developer or team of developers who wish to develop a LAURA applied specific WSN/IoT final solution based on LAURA architecture, using the ready to use LAURA VM with the technological choises made as described in section ‘4.4. LAURA Applied architecture’ [Paper awaiting approval]. 
   
-This tutorial can be used by anyone who has the specific knowledge required or compatible with the professional profiles as described in section ‘4.1. Stakeholders’ <Paper awaiting approval>. In addition, this tutorial seeks to simplify and facilitate the use of the LAURA VM, demonstrating that it is relatively simple, requiring little knowledge of the lower level aspects that are usually performed by the WSN expert.
+This tutorial can be used by anyone who has the specific knowledge required or compatible with the professional profiles as described in section ‘4.1. Stakeholders’ [Paper awaiting approval]. In addition, this tutorial seeks to simplify and facilitate the use of the LAURA VM, demonstrating that it is relatively simple, requiring little knowledge of the lower level aspects that are usually performed by the WSN expert.
   
  #### 1.3 Network configurations, requirements and technical assumptions
  
  ##### 1.3.1 Network configuration and specifications used in the LAURA VM
  
- The LAURA VM is configured according to the specification and network settings used in the experiment 3, section 5.3 <Paper awaiting approval>. Table 1 presents WSN specification and some essential network configurations necessary to run the final application;
+ The LAURA VM is configured according to the specification and network settings used in the experiment 3, section 5.3 [Paper awaiting approval]. Table 1 presents WSN specification and some essential network configurations necessary to run the final application;
   
   ![image1](./assets/1.jpg)
   
-  If you have a MIB600 obviously, your MAC address will be different. If you do not use MIB600 Gateways you can connect the Sink node directly to your computer via USB port. We used static IP address. The network topology used in the VM is the same used in experiment 3, as shown in Figure 9 in <Paper awaiting approval>.
+  > Table 1 - WSN specifications previously configured in the LAURA VM 
+  
+  If you have a MIB600 obviously, your MAC address will be different. If you do not use MIB600 Gateways you can connect the Sink node directly to your computer via USB port. We used static IP address. The network topology used in the VM is the same used in experiment 3, as shown in Figure 9 in [Paper awaiting approval].
 To assign an IP address to the Sink node you must use the ‘arp’ command. Follow the steps below to assign the IP address:
-- Open the terminal and run the command "arp -s <ip> <MAC>". For example, to bind the IP address to the Sink node of WSN2 as previously shown in the Table 1, use the comand: "arp -s 192.168.2.202 00-20-4a-d2-d7-76";
+- Open the terminal and run the command `arp -s <ip> <MAC>`. For example, to bind the IP address to the Sink node of WSN2 as previously shown in the Table 1, use the comand: "arp -s 192.168.2.202 00-20-4a-d2-d7-76";
 - After linking the IP to the Sink node, it must be accessed via telnet to test the connection. Execute the command ‘telnet 192.168.2.202 1’ to verify the connection to the WSN2 Sink node;
 - To verify the settings, execute the command ‘telnet 192.168.2.202 9999’;
 - To exit the settings, press 8 to exit without saving.
@@ -45,7 +47,7 @@ To assign an IP address to the Sink node you must use the ‘arp’ command. Fol
 ##### 1.3.2 Requirements and technical assumptions
 
 It is important to know the essential requirements and some technical assumptions necessary to use the LAURA VM. The essential requirements are:
-- Read carefully the study <Paper awaiting approval> that presents the LAURA architecture;
+- Read carefully the study [Paper awaiting approval] that presents the LAURA architecture;
 - Know the basic concepts of Terra System and have the necessary knowledge to configure a sensor node with Terra System so that it is able to receive an update of the node code (bytecode);
 - More details about Terra System can be obtained in Github project at: https://github.com/afbranco/Terra or http://afbranco.github.io/Terra/terra-home.html or in the study ‘Terra: Flexibility and Safety in Wireless Sensor Networks’ (Branco et al., 2015)
 The technical assumptions necessary to use the LAURA VM are:
@@ -72,11 +74,15 @@ This Chapter presents the necessary steps to make settings, run applications and
 
 ![image2](./assets/2.png)
 
+> Figure 1 – Terminal showing the command to start `Terra Web Control`.
+
 - After executing the command, you will start the client part of the application that establishes the connection with the 'Terra Core' via Socke.io;
 - You must open the Browser and enter the URL 'http://localhost: 9191' as shown in figure 2. From this point, the Web application is able to display the sensed data as soon as it is received;
 - It is important to remember that the codes and other files available in this directory are also available in the GitHub repository of the LAURA project (Teixeira et al., 2017). This folder is a copy of the files that are in GitHub.
 
 ![image3](./assets/3.png)
+
+> Figure 2 – Opening the ‘Terra Web Control’ final application.
 
 #### 2.3 Node Code Dissemination
 - The experiment used in this tutorial is based on Terra System. Assuming that the node is already configured with Terra System, it is necessary to spread the code of the nodes (bytecodes) that will be running into the Terra Virtual Machine (VM-T);
@@ -85,6 +91,8 @@ This Chapter presents the necessary steps to make settings, run applications and
 - Access the folder ‘/home/wsn/Documents/terra-core/gateway/dia’, open the terminal and execute de command `lua main.lua default` as shown in Figure 3;
 
 ![image4](./assets/4.png)
+
+> Figure 3 –Terminal showing the command to start `Terra Dia`to disseminate the node codes (bytecodes).
 
 - Before executing the command to disseminate the node codes, it is important to understand the parameters necessary to perform any `Terra Dia` dissemination. In addition, the compiled VM-T code (file: LauraTest01.vmx) must also be in the same folder;
 - The default setting is already set in the main.lua file in the same folder;
@@ -103,6 +111,8 @@ This Chapter presents the necessary steps to make settings, run applications and
 
 ![image5](./assets/5.png)
 
+> Figure 4 – Compiling the LauraTest01.terra source code
+
 #### 2.4. Start the ‘TerraGateway’ module
 
 - TerraGateway is the module responsible for the connection between TerraCore and Sink Node. This module receives the sensed data from the WSN nodes and redirects them to the upper layers of the LAURA architecture;
@@ -110,10 +120,14 @@ This Chapter presents the necessary steps to make settings, run applications and
     
 ![image6](./assets/6.png)
 
+> Figure 5 – Terminal showing the command to start `TerraGateway` module.
+
 - Remember that this command will use the default settings that were previously made in the main.lua file in the same folder;
 - After executing this command, the sensed data will be displayed in the ‘Terra Web Control’ application as shown in figure 6.
 
-![image7](./assets/7.gif)    
+![image7](./assets/7.gif)
+
+> Figure 6 – ‘Terra Web Control’ showing sensed data.
     
     
 ## References
