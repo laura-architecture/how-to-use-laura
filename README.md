@@ -33,7 +33,7 @@ This tutorial can be used by anyone who has the specific knowledge required or c
  
  The LAURA VM is configured according to the specification and network settings used in the experiment 3, section 5.3 <Paper awaiting approval>. Table 1 presents WSN specification and some essential network configurations necessary to run the final application;
   
-  [image1]
+  ![image1](./assets/1.jpg)
   
   If you have a MIB600 obviously, your MAC address will be different. If you do not use MIB600 Gateways you can connect the Sink node directly to your computer via USB port. We used static IP address. The network topology used in the VM is the same used in experiment 3, as shown in Figure 9 in <Paper awaiting approval>.
 To assign an IP address to the Sink node you must use the ‘arp’ command. Follow the steps below to assign the IP address:
@@ -70,13 +70,13 @@ This Chapter presents the necessary steps to make settings, run applications and
 - Access the folder `/home/wsn/Documents/terra-core` as shown in Figure 1;
 - Open a terminal and execute the command `npm run dev` to start ‘Terra Web Control’;
 
-[image2]
+![image2](./assets/2.png)
 
 - After executing the command, you will start the client part of the application that establishes the connection with the 'Terra Core' via Socke.io;
 - You must open the Browser and enter the URL 'http://localhost: 9191' as shown in figure 2. From this point, the Web application is able to display the sensed data as soon as it is received;
 - It is important to remember that the codes and other files available in this directory are also available in the GitHub repository of the LAURA project (Teixeira et al., 2017). This folder is a copy of the files that are in GitHub.
 
-[image3]
+![image3](./assets/3.png)
 
 #### 2.3 Node Code Dissemination
 - The experiment used in this tutorial is based on Terra System. Assuming that the node is already configured with Terra System, it is necessary to spread the code of the nodes (bytecodes) that will be running into the Terra Virtual Machine (VM-T);
@@ -84,7 +84,7 @@ This Chapter presents the necessary steps to make settings, run applications and
 - In order to disseminate the codes of the already compiled nodes you must use TerraDia application;
 - Access the folder ‘/home/wsn/Documents/terra-core/gateway/dia’, open the terminal and execute de command `lua main.lua default` as shown in Figure 3;
 
-[image4]
+![image4](./assets/4.png)
 
 - Before executing the command to disseminate the node codes, it is important to understand the parameters necessary to perform any `Terra Dia` dissemination. In addition, the compiled VM-T code (file: LauraTest01.vmx) must also be in the same folder;
 - The default setting is already set in the main.lua file in the same folder;
@@ -101,20 +101,19 @@ This Chapter presents the necessary steps to make settings, run applications and
 - To compile use the command 'terrac LauraTest01.terra' as shown in figure 4;
 
 
-[image5]
+![image5](./assets/5.png)
 
 #### 2.4. Start the ‘TerraGateway’ module
 
 - TerraGateway is the module responsible for the connection between TerraCore and Sink Node. This module receives the sensed data from the WSN nodes and redirects them to the upper layers of the LAURA architecture;
 - Access the folder `/home/wsn/Documents/terra-core/gateway/`, open the terminal and execute do command 'lua main.lua default' to run TerraGateway as show in figure 5; 
     
- [image6]
-    
+![image6](./assets/6.png)
+
 - Remember that this command will use the default settings that were previously made in the main.lua file in the same folder;
 - After executing this command, the sensed data will be displayed in the ‘Terra Web Control’ application as shown in figure 6.
 
-[image7]
-    
+![image7](./assets/7.gif)    
     
     
 ## References
